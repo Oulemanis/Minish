@@ -221,7 +221,14 @@ static int execute_pipeline(const struct pipeline *pipeline)
 	// an internal command. Remember that the command name is always stored in
 	// argv[0].
 
-	// Add your code here...
+	if (pipeline->command_count == 1) {
+		if (pipeline->commands[0].argv != NULL && pipeline->commands[0].argv[0] != NULL) {
+			if (!strcmp(pipeline->commands[0].argv[0], "exit")) {
+				pipeline_free(pipeline)
+				exit(0);
+			}
+		}
+	}
 
 	// No internal command found. We have to execute a new program for each
 	// command in the pipeline.

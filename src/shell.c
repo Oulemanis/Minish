@@ -2,8 +2,7 @@
 /*
  * Minish shell.
  *
- * Add The name of the first team member here in the form Surname Lastname, iis...
- * Add The name of the first team member here in the form Surname Lastname, iis...
+ * Σταύρος Ουλεμάνης, ics26177
 */
 
 #include <errno.h>
@@ -159,7 +158,12 @@ void add_bg_job(const pid_t pid)
 	for (i = 0; i < MAX_JOBS; i++) {
 		// Find the first position in the array with active == 0 and add the
 		// new job there. Then call break to exit the loop.
-        // Add your code here...
+		
+		if (jobs[i].active == 0) {
+			jobs[i].pid = pid;
+			jobs[i].active = 1;
+			break;
+		}
 	}
 }
 
@@ -167,11 +171,16 @@ void remove_bg_job(const pid_t pid)
 {
 	int i;
 
-	for (i = 0; i < MAX_JOBS; i++) {
+	for (i = 0; i < MAX_JOBS; i++) {	
 		// Find the first position in the array where its pid matches with the
 		// pid parameter of the function and then clean it by setting pid to
 		// -1 and active to 0.
-        // Add your code here...
+
+        if (jobs[i].pid == pid) {
+			jobs[i].pid = -1;
+			jobs[i].active = 0;
+			break;
+		}
 	}
 }
 
@@ -187,7 +196,11 @@ void reap_bg_jobs(void) {
 		// found a terminated background process. Call remove_bg_job()
 		// properly to remove this process from the jobs array.
           		
-        // Add your code here...
+		if (jobs[i].active == 1) {
+			pid = waitpid(jobs[i].pid, &status, WNOHANG);
+			if (pid > 0)
+				remove_bg_job(pid);
+		}
 	}	
 }
 

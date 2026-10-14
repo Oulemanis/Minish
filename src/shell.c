@@ -224,7 +224,7 @@ static int execute_pipeline(const struct pipeline *pipeline)
 	if (pipeline->command_count == 1) {
 		if (pipeline->commands[0].argv != NULL && pipeline->commands[0].argv[0] != NULL) {
 			if (!strcmp(pipeline->commands[0].argv[0], "exit")) {
-				pipeline_free(pipeline)
+				pipeline_free(pipeline);
 				exit(0);
 			}
 		}

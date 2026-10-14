@@ -215,19 +215,28 @@ static int execute_pipeline(const struct pipeline *pipeline)
 {
 	pid_t *pids;	
 	int result = 0;
+	char *directory; // pou thelo na paw 
 	
 	// First, we have to handle the internal commands. To do this, we need to
 	// check if our command count is one, and if the name of the command matches
 	// an internal command. Remember that the command name is always stored in
 	// argv[0].
+	// argc ean input cd argc = 1 ean input cd /home/user argc = 2
 
 	if (pipeline->command_count == 1) {
 		if (pipeline->commands[0].argv != NULL && pipeline->commands[0].argv[0] != NULL) {
 			if (!strcmp(pipeline->commands[0].argv[0], "exit")) {
 				pipeline_free((struct pipeline *)pipeline); //to (struct pipeline *) agnoei to const gia na min einai read only 
 				exit(0);
-			} else if (!strcmp(pipeline->commands[0].argv[0], "cd")) {
-				printf("test cd \n");
+			} if (!strcmp(pipeline->commands[0].argv[0], "cd")) {
+				if (pipeline->commands[0].argc > 1)
+					directory = pipeline->commands[0].argv[1]; // parnei px to /tmp apo to cd /tmp tin deuteri leksi
+				else 
+					directory = getenv("HOME"); // se paei home ean grapsei mono cd
+				
+				chdir(directory);
+
+				return 0; 								   
 			}
 		}
 	}

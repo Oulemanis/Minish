@@ -1,24 +1,7 @@
-# minsh-base
+# Minish
 
-`minsh-base` is a starter repository for **Minish**, a small Unix-like shell
-written in C for an undergraduate Operating Systems course.
-
-The project is designed to teach how a shell uses operating-system interfaces
-to create processes, execute programs, connect file descriptors, and manage
-child processes. 
-
-## Learning objectives
-
-By completing the project, students should learn to:
-
-- create child processes with `fork()`;
-- replace a child process image with `execvp()`;
-- wait for child processes with `wait()` or `waitpid()`;
-- redirect standard input and output with `open()` and `dup2()`;
-- connect commands using `pipe()`;
-- install signal handlers with `sigaction()`;
-- close unused file descriptors and clean up resources correctly;
-- handle system-call failures without unnecessarily terminating the shell.
+`Minish` is a small Unix-like shell written in C for an undergraduate Operating Systems course.
+Based on the starter repository [OS-AIC303/minish-base](https://github.com/OS-AIC303/minish-base).
 
 ## Repository layout
 

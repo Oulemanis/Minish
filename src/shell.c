@@ -226,6 +226,8 @@ static int execute_pipeline(const struct pipeline *pipeline)
 			if (!strcmp(pipeline->commands[0].argv[0], "exit")) {
 				pipeline_free((struct pipeline *)pipeline); //to (struct pipeline *) agnoei to const gia na min einai read only 
 				exit(0);
+			} else if (!strcmp(pipeline->commands[0].argv[0], "cd")) {
+				printf("test cd \n");
 			}
 		}
 	}

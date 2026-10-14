@@ -2,12 +2,8 @@
 
 ## Members
 ### Member 1
-- Name: 
-- Academic ID:
-
-### Member 2
-- Name: 
-- Academic ID:
+- Name: Σταύρος Ουλεμάνης
+- Academic ID: ics26177
 
 ## Σύντομη περιγραφή υλοποίησης
 

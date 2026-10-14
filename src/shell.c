@@ -215,7 +215,8 @@ static int execute_pipeline(const struct pipeline *pipeline)
 {
 	pid_t *pids;	
 	int result = 0;
-	char *directory; // pou thelo na paw 
+	//char *directory; // pou thelo na paw
+	char *directory = getenv("HOME");
 	
 	// First, we have to handle the internal commands. To do this, we need to
 	// check if our command count is one, and if the name of the command matches
@@ -231,8 +232,8 @@ static int execute_pipeline(const struct pipeline *pipeline)
 			} if (!strcmp(pipeline->commands[0].argv[0], "cd")) {
 				if (pipeline->commands[0].argc > 1)
 					directory = pipeline->commands[0].argv[1]; // parnei px to /tmp apo to cd /tmp tin deuteri leksi
-				else 
-					directory = getenv("HOME"); // se paei home ean grapsei mono cd
+				//else 
+					//directory = getenv("HOME"); // se paei home ean grapsei mono cd
 				
 				chdir(directory);
 

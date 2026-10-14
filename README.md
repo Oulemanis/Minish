@@ -1,7 +1,7 @@
 # Minish
 
 `Minish` is a small Unix-like shell written in C for an undergraduate Operating Systems course.
-Based on the starter repository [OS-AIC303/minish-base](https://github.com/OS-AIC303/minish-base).
+Based on [OS-AIC303/minish-base](https://github.com/OS-AIC303/minish-base).
 
 ## Repository layout
 
